@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	{{ parent() }}S'inscrire
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="css/inscription.css">
+{% if form.valide is defined %}
+    {% if form.valide == true %}
+        <center>
+            <div class="container" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1200" data-aos-once="true" style="margin-top:15%;">
+                <div class="alert alert-dismissible bg-primary rounded">
+                    <strong style="color:white;">Inscription réussie</strong>
+                    <h1 style="color: dodgerblue;">Bienvenue
+                        {{form.nom}}
+                        !</h1>
+                    <a href="index.php?page=connexion" class="alert-link" style="color:white;">Page de connexion</a>
+                </div>
+            </div>
+        </center>
+    {% endif %}
+		{% if form.valide == false %}
+			<form class="mx-auto">
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>ERREUR</strong>
+				</div>
+			</form>
+	{% endif %}
+{% else %}
+<div class="container">
+	<div class="row">
+		<div class="container bg-primary" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1200" data-aos-once="true" id="test">
+			<form class="m-5" id="btInscrire" action="index.php?page=inscription" method="post" enctype="application/x-www-formurlencoded" style="width:80%;" align="center">
+
+                <h2 class="text-center text-white">Créer un compte</h2>
+                </br>
+                <div class="form-group">
+                    <div class="form-floating">
+                        <input type="text" class="rounded form-control bg-secondary" id="inputPrenom" placeholder="Prénom" name="inputPrenom" required="">
+                        <label for="inputPrenom">Prénom</label>
+                    </div>
+                </br>
+
+                    <div class="form-floating">
+                        <input type="text" class="rounded form-control bg-secondary" id="inputNom" placeholder="Nom" name="inputNom" required="">
+                        <label for="inputNom">Nom</label>
+                    </div>
+                </br>
+
+                    <div class="form-floating">
+                        <input type="email" class="rounded form-control bg-secondary" id="inputEmail" placeholder="Email" name="inputEmail" required="">
+                        <label for="inputEmail">Email</label>
+                    </div>
+                </br>
+
+                    <div class="form-floating">
+                        <input type="password" class="rounded form-control bg-secondary" id="inputPassword" placeholder="Password" name="inputPassword" minlength="8" required="">
+                        <label for="inputPassword">Mot de passe</label>
+                        <span>Au moins 8 caractères</span>
+                    </div>
+
+
+                    <div class="form-floating">
+                        <input type="password" class="rounded form-control bg-secondary" id="inputPassword2" placeholder="Password" name="inputPassword2" minlength="8" required="">
+                        <label for="inputPassword2">Entrez à nouveau</label>
+                    </div>
+                </br>
+
+                <div class="col-sm text-center">
+                    <button class="rounded btn btn-info btn-block btn-center" id="bouton" type="submit" name="btInscrire">Continuer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

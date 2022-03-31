@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	{{ parent() }}S'identifier
+{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="css/inscription.css">
+	{% if form.valide is defined %}
+		{% if form.valide == false %}
+			<form class="mx-auto">
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>ERREUR</strong>
+					{{form.message}}
+				</div>
+			</form>
+		{% endif %}
+	{% endif %}
+
+<div class="container">
+	<div class="row">
+		<div class="container bg-primary" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1200" data-aos-once="true" id="test">
+			<form class="m-5" id="btConnecter" action="index.php?page=connexion" method="post" enctype="application/x-www-formurlencoded" style="width:80%;" align="center">
+
+                <h2 class="text-center text-white">S'identifier</h2>
+                </br>
+                <div class="form-group">
+
+                    <div class="form-floating">
+                        <input type="email" class="rounded form-control bg-secondary" id="inputEmail" placeholder="Email" name="inputEmail" required="">
+                        <label for="inputEmail">Email</label>
+                    </div>
+                </br>
+
+                    <div class="form-floating">
+                        <input type="password" class="rounded form-control bg-secondary" id="inputPassword" placeholder="Password" name="inputPassword" minlength="8" required="">
+                        <label for="inputPassword">Mot de passe</label>
+                    </div>
+                </br>    
+
+                <div class="col-sm text-center">
+                    <button class="rounded btn btn-info btn-block btn-center" id="bouton" type="submit" name="btConnecter">Continuer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
